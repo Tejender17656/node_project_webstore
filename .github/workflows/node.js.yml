@@ -59,7 +59,7 @@ jobs:
         run: eb init Githubcode-env --region us-east-1  # Replace with your application name and region
 
       - name: Deploy to Elastic Beanstalk
-        run: eb deploy Githubcode-env --staged
+        run: eb deploy Githubcode-env --staged --quiet
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
