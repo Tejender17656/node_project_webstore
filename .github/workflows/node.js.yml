@@ -31,12 +31,10 @@ jobs:
       #  run: npm run build
 
       - name: Zip Code
+        shell: bash
         run: |
-          # Create a directory to hold the zip file
           mkdir zipped_code
-          
-          # Zip the entire codebase (excluding .git directory)
-          zip -r zipped_code/code.zip . -x ".git/*
+          zip -r zipped_code/code.zip . -x "*.git*"
 
 
       - name: Upload to S3
