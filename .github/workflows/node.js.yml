@@ -43,7 +43,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AKIARHOY6JTFQUXBQJFZ }}
-          aws-secret-access-key: ${{ secrets.NJp7p6oaE+m1Sta4x63DmWQUMTGYXoN3eiRp1vU5 }}
+          aws-secret-access-key: ${{ secrets.'NJp7p6oaE+m1Sta4x63DmWQUMTGYXoN3eiRp1vU5' }}
           aws-region: us-east-1  # Replace with your desired AWS region
 
       - name: Transfer Zip to S3
