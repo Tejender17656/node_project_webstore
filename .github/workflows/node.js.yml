@@ -50,7 +50,7 @@ jobs:
       - name: Deploy to Elastic Beanstalk
         run: |
           pip install awsebcli
-          eb deploy your-application-name -e your-environment-name --staged
+          eb deploy github_code -e your-Githubcode-env --staged
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
