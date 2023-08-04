@@ -56,10 +56,10 @@ jobs:
           pip install awsebcli
 
       - name: Initialize EB CLI
-        run: eb init github_code --platform "Node.js" --region us-east-1  # Replace with your application name and region
+        run: eb init Githubcode-env --platform "Node.js" --region us-east-1  # Replace with your application name and region
 
       - name: Deploy to Elastic Beanstalk
-        run: eb deploy github_code --staged
+        run: eb deploy Githubcode-env --staged
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
