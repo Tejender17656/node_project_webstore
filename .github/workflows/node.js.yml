@@ -60,9 +60,10 @@ jobs:
 
       - name: Deploy to Elastic Beanstalk
         run: |
-            aws elasticbeanstalk create-application-version --application-name github_code --version-label $GITHUB_SHA --source-bundle S3Bucket=githubnodetest,S3Key=code.zip
-            aws elasticbeanstalk update-environment --environment-name Githubcode-env --version-label code
+         aws elasticbeanstalk create-application-version --application-name github_code --version-label $GITHUB_SHA --source-bundle S3Bucket=githubnodetest,S3Key=code.zip
+         EB_VERSION_LABEL=$(aws elasticbeanstalk describe-application-versions --application-name github_code --query "ApplicationVersions[?VersionLabel=='$GITHUB_SHA'].VersionLabel" --output text)
+         aws elasticbeanstalk update-environment --environment-name Githubcode-env --version-label $EB_VERSION_LABEL
         env:
-               AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-               AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-               AWS_DEFAULT_REGION: us-east-1
+         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+         AWS_DEFAULT_REGION: us-east-1
