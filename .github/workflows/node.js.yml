@@ -56,7 +56,7 @@ jobs:
           pip install awsebcli
 
       - name: Initialize EB CLI
-        run: eb init Githubcode-env --region us-east-1  # Replace with your application name and region
+        run: eb init Githubcode-env --platform "Node.js" --region us-east-1  # Replace with your application name and region
 
       - name: Deploy to Elastic Beanstalk
         run: eb deploy Githubcode-env --staged --quiet
