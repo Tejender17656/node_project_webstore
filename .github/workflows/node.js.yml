@@ -36,4 +36,16 @@ jobs:
           mkdir zipped_code
           
           # Zip the entire codebase (excluding .git directory)
-          zip -r zipped_code/code.zip . -x ".git/*"
+          zip -r zipped_code/code.zip . -x ".git/*
+
+
+      - name: Upload to S3
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AKIARHOY6JTFQUXBQJFZ }}
+          aws-secret-access-key: ${{ secrets.NJp7p6oaE+m1Sta4x63DmWQUMTGYXoN3eiRp1vU5 }}
+          aws-region: us-east-1  # Replace with your desired AWS region
+
+      - name: Transfer Zip to S3
+        run: aws s3 cp zipped_code/code.zip s3://githubnodetest/
+
